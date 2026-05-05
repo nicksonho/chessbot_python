@@ -9,7 +9,7 @@ class GameState():
     The first character represents the color of the piece, 'b' or 'w'. 
     The second character represents the type of the piece. 'K', 'Q', 'R', 'B', 'N', 'P'
     "--" represents an empty space with no piece.    
-    """
+    """ 
     def __init__(self):
         self.board = [
             ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],

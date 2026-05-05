@@ -4,7 +4,7 @@ and displaying the current GameState object.
 """
 
 import pygame as p
-import chessEngine
+import src.chessEngine as chessEngine
 
 WIDTH = HEIGHT = 512
 DIMENSION = 8 # dimensions of a chess board are 8x8
