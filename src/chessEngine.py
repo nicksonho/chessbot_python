@@ -3,13 +3,16 @@ This class is responsible for storing all the information about the current stat
 It will also be responsible for determining the valid moves at the current state.
 It will also keep a move log.
 """
-class GameState():
+
+
+class GameState:
     """
     The board is an 8x8 2D List, each element of the list has 2 characters.
-    The first character represents the color of the piece, 'b' or 'w'. 
+    The first character represents the color of the piece, 'b' or 'w'.
     The second character represents the type of the piece. 'K', 'Q', 'R', 'B', 'N', 'P'
-    "--" represents an empty space with no piece.    
-    """ 
+    "--" represents an empty space with no piece.
+    """
+
     def __init__(self):
         self.board = [
             ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
@@ -19,7 +22,7 @@ class GameState():
             ["--", "--", "--", "--", "--", "--", "--", "--"],
             ["--", "--", "--", "--", "--", "--", "--", "--"],
             ["wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp"],
-            ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
+            ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"],
         ]
         self.whiteToMove = True
         self.moveLog = []
@@ -28,9 +31,10 @@ class GameState():
         self.board[move.startRow][move.startCol] = "--"
         self.board[move.endRow][move.endCol] = move.pieceMoved
         self.moveLog.append(move)
-        self.whiteToMove = not self.whiteToMove # Switch turns
+        self.whiteToMove = not self.whiteToMove  # Switch turns
 
-class Move():
+
+class Move:
     # Maps keys to values. This will help us to display the move in a more readable way.
     ranksToRows = {"1": 7, "2": 6, "3": 5, "4": 4, "5": 3, "6": 2, "7": 1, "8": 0}
     rowsToRanks = {v: k for k, v in ranksToRows.items()}
@@ -46,8 +50,11 @@ class Move():
         self.pieceCaptured = board[self.endRow][self.endCol]
 
     def getChessNotation(self):
-        return self.getRankFile(self.startRow, self.startCol) + "-" + self.getRankFile(self.endRow, self.endCol)
-    
+        return (
+            self.getRankFile(self.startRow, self.startCol)
+            + "-"
+            + self.getRankFile(self.endRow, self.endCol)
+        )
+
     def getRankFile(self, r, c):
         return self.colsToFiles[c] + self.rowsToRanks[r]
-    
